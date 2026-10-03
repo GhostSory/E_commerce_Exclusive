@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Configuration de la page et ressources externes -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive — Online Shopping</title>
+    <meta name="description" content="Exclusive — your online store for electronics, fashion, home and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+</head>
+<body>
+    <!-- En-tête : navigation, recherche et accès rapides -->
+    <header class="header">
+        <!-- Logo de la boutique -->
+        <a href="#home" class="header__logo">Exclusive</a>
+
+        <!-- Bouton menu mobile -->
+        <button type="button" class="header__menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+            <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
+
+        <!-- Liens principaux du site -->
+        <nav class="header__nav" id="mainNav">
+            <ul class="header__nav-list">
+                <li><a href="#home" class="header__nav-link">Home</a></li>
+                <li><a href="#contact" class="header__nav-link">Contact</a></li>
+                <li><a href="#about" class="header__nav-link">About</a></li>
+                <li><a href="#signup" class="header__nav-link">Sign Up</a></li>
+            </ul>
+        </nav>
+        <!-- Outils de recherche, favoris et panier -->
+        <div class="header__actions">
+            <form class="header__search" role="search" action="#" onsubmit="return false;">
+                <label for="search" class="visually-hidden">Search products</label>
+                <input type="text" id="search" placeholder="What are you looking for?">
+                <button type="submit" class="icon" aria-label="Search"><i class="ri-search-line" aria-hidden="true"></i></button>
+            </form>
+            <button type="button" class="icon" id="wishlistBtn" aria-label="Wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+            <button type="button" class="icon" id="cartBtn" aria-label="Shopping cart, 0 items">
+                <i class="ri-shopping-cart-line" aria-hidden="true"></i>
+                <span class="header__badge" id="cartCount" hidden>0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="page-main">
+
+         <!-- Zone d'accueil avec le catalogue et l'offre principale -->
+        <div class="hero-layout">
+            <!-- Menu latéral des familles de produits -->
+            <aside class="category-menu">
+                <ul>
+                    <li class="category-menu__item"><a href="#">Woman's Fashion <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a></li>
+                    <li class="category-menu__item"><a href="#">Men's Fashion <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a></li>
+                    <li class="category-menu__item"><a href="#">Electronics</a></li>
+                    <li class="category-menu__item"><a href="#">Home &amp; Lifestyle</a></li>
+                    <li class="category-menu__item"><a href="#">Medicine</a></li>
+                    <li class="category-menu__item"><a href="#">Sports &amp; Outdoor</a></li>
+                    <li class="category-menu__item"><a href="#">Baby's &amp; Toys</a></li>
+                    <li class="category-menu__item"><a href="#">Groceries &amp; Pets</a></li>
+                    <li class="category-menu__item"><a href="#">Health &amp; Beauty</a></li>
+                </ul>
+            </aside>
+
+            <!-- Offre mise en avant avec visuel et appel à l'action -->
+            <section class="hero-banner" id="home" aria-roledescription="carousel" aria-label="Featured offer">
+                <div class="hero-banner__content">
+                    <!-- Identification de la gamme présentée -->
+                    <div class="hero-banner__text">
+                        <img src="image/logo_apple.svg" alt="" class="hero-banner__brand">
+                        <p class="hero-banner__title">iPhone 14 Series</p>
+                    </div>
+                    <h1 class="hero-banner__description">Up to 10% off voucher</h1>
+                    <!-- Lien vers la boutique de l'offre -->
+                    <div class="hero-banner__cta">
+                        <a href="#" class="hero-banner__link">Shop Now</a>
+                        <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <!-- Indicateurs de position du carrousel -->
+                <ul class="hero-banner__dots" role="tablist" aria-label="Slides">
+                    <li><button type="button" class="hero-banner__dot" role="tab" aria-label="Slide 1" aria-selected="false"></button></li>
+                    <li><button type="button" class="hero-banner__dot" role="tab" aria-label="Slide 2" aria-selected="false"></button></li>
+                    <li><button type="button" class="hero-banner__dot hero-banner__dot--active" role="tab" aria-label="Slide 3" aria-selected="true"></button></li>
+                    <li><button type="button" class="hero-banner__dot" role="tab" aria-label="Slide 4" aria-selected="false"></button></li>
+                    <li><button type="button" class="hero-banner__dot" role="tab" aria-label="Slide 5" aria-selected="false"></button></li>
+                </ul>
+                <!-- Image principale de la bannière -->
+                <img src="image/hero_endframe.png" alt="iPhone 14 Series" class="hero-banner__image">
+            </section>
+        </div>
+
+        <!-- En-tête de la section des ventes flash -->
+        <section class="section-header">
+            <div class="section-header__intro">
+                <div class="section-header__bar"></div>
+                <span class="section-header__label">Today's</span>
+            </div>
+
+            <div class="flash-sale">
+                <div class="flash-sale__content">
+                    <h2 class="flash-sale__title">Flash Sales</h2>
+                    <!-- Temps restant avant la fin de la promotion -->
+                    <div class="countdown" id="flashCountdown" data-duration-days="3" data-duration-hours="23" data-duration-minutes="19" data-duration-seconds="56" aria-live="off">
+                       <div class="countdown__item">
+                           <span class="countdown__value" data-unit="days">03</span>
+                           <span class="countdown__label">Days</span>
+                       </div>
+                       <span class="countdown__separator" aria-hidden="true">:</span>
+                       <div class="countdown__item">
+                           <span class="countdown__value" data-unit="hours">23</span>
+                           <span class="countdown__label">Hours</span>
+                       </div>
+                       <span class="countdown__separator" aria-hidden="true">:</span>
+                       <div class="countdown__item">
+                           <span class="countdown__value" data-unit="minutes">19</span>
+                           <span class="countdown__label">Minutes</span>
+                       </div>
+                       <span class="countdown__separator" aria-hidden="true">:</span>
+                       <div class="countdown__item">
+                           <span class="countdown__value" data-unit="seconds">56</span>
+                           <span class="countdown__label">Seconds</span>
+                       </div>
+                    </div>
+                </div>
+                <!-- Navigation entre les offres de la section -->
+                <div class="flash-sale__navigation">
+                    <button type="button" class="nav-arrow" aria-label="Previous products"><i class="ri-arrow-left-line" aria-hidden="true"></i></button>
+                    <button type="button" class="nav-arrow" aria-label="Next products"><i class="ri-arrow-right-line" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produits proposés pendant les ventes flash -->
+        <section class="product-grid">
+            <!-- Carte produit : réduction, image, prix et évaluation -->
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-40%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/1.png" alt="HAVIT HV-G92 Gamepad" class="product-card__image">
+                <span class="product-card__title">HAVIT HV-G92 Gamepad</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$120</span>
+                    <span class="product-card__price--old">$160</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 88 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(88)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- Deuxième produit de la vente flash -->
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-35%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/2.png" alt="AK-900 Wired Keyboard" class="product-card__image">
+                <span class="product-card__title">AK-900 Wired Keyboard</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$960</span>
+                    <span class="product-card__price--old">$1160</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 4 out of 5, 75 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-line" aria-hidden="true"></i>
+                    <span>(75)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- Troisième produit de la vente flash -->
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-30%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/3.png" alt="IPS LCD Gaming Monitor" class="product-card__image">
+                <span class="product-card__title">IPS LCD Gaming Monitor</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$370</span>
+                    <span class="product-card__price--old">$400</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 99 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(99)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <!-- Quatrième produit de la vente flash -->
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-25%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/4.png" alt="S-Series Comfort Chair" class="product-card__image">
+                <span class="product-card__title">S-Series Comfort Chair</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$375</span>
+                    <span class="product-card__price--old">$400</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 99 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(99)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- En-tête de la navigation par catégories -->
+        <section class="section-header">
+            <div class="section-header__intro">
+                <div class="section-header__bar"></div>
+                <span class="section-header__label">Categories</span>
+            </div>
+
+            <div class="section-header__content">
+                <div class="section-header__group">
+                    <h2 class="section-header__title">Browse By Category</h2>
+                </div>
+                <div class="section-header__navigation">
+                    <button type="button" class="nav-arrow" aria-label="Previous categories"><i class="ri-arrow-left-line" aria-hidden="true"></i></button>
+                    <button type="button" class="nav-arrow" aria-label="Next categories"><i class="ri-arrow-right-line" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Liste des catégories disponibles -->
+        <section class="category-grid">
+            <!-- Chaque bloc représente une catégorie filtrable -->
+            <button type="button" class="category-card">
+                <img src="icons/smartphone.svg" alt="" class="category-card__icon">
+                <span class="category-card__title">Phones</span>
+            </button>
+
+            <button type="button" class="category-card">
+                <img src="icons/computer.svg" alt="" class="category-card__icon">
+                <span class="category-card__title">Computers</span>
+            </button>
+
+            <button type="button" class="category-card">
+                <img src="icons/smartwatch.svg" alt="" class="category-card__icon">
+                <span class="category-card__title">SmartWatch</span>
+            </button>
+
+            <button type="button" class="category-card category-card--active" aria-pressed="true">
+                <img src="icons/camera.svg" alt="" class="category-card__icon">
+                <span class="category-card__title category-card__title--active">Camera</span>
+            </button>
+
+            <button type="button" class="category-card">
+                <img src="icons/headphones.svg" alt="" class="category-card__icon">
+                <span class="category-card__title">HeadPhones</span>
+            </button>
+
+            <button type="button" class="category-card">
+                <img src="icons/gaming.svg" alt="" class="category-card__icon">
+                <span class="category-card__title">Gaming</span>
+            </button>
+        </section>
+
+        <!-- Accès à l'ensemble du catalogue -->
+        <section class="catalogue-link">
+            <a href="#" class="catalogue-link__content">
+                <span class="catalogue-link__title">View All Products</span>
+            </a>
+        </section>
+
+        <!-- En-tête de la section des meilleures ventes du mois -->
+        <section class="section-header">
+            <div class="section-header__intro">
+                <div class="section-header__bar"></div>
+                <span class="section-header__label">This Month</span>
+            </div>
+            <div class="section-header__content">
+                <div class="section-header__group">
+                    <h2 class="section-header__title">Best Selling Products</h2>
+                </div>
+                <a href="#" class="catalogue-link__content catalogue-link__content--compact">
+                    <span class="catalogue-link__title">View All</span>
+                </a>
+            </div>
+        </section>
+
+         <!-- Produits les plus vendus du mois -->
+         <section class="product-grid">
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-40%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/5.png" alt="The North Coat" class="product-card__image">
+                <span class="product-card__title">The north coat</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$260</span>
+                    <span class="product-card__price--old">$360</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 65 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(65)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-40%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/6.png" alt="Gucci Duffle Bag" class="product-card__image">
+                <span class="product-card__title">Gucci duffle bag</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$960</span>
+                    <span class="product-card__price--old">$1160</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 65 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(65)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-30%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/7.png" alt="RGB Liquid CPU Cooler" class="product-card__image">
+                <span class="product-card__title">RGB liquid CPU Cooler</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$160</span>
+                    <span class="product-card__price--old">$170</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 65 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(65)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount">-25%</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/8.png" alt="Small Bookshelf" class="product-card__image">
+                <span class="product-card__title">Small BookSelf</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$360</span>
+                    <span class="product-card__price--old"></span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 65 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(65)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Bannière promotionnelle pour l'expérience musicale -->
+        <section class="hero-banner hero-banner--music">
+            <div class="hero-banner__content">
+                <!-- Nom de la campagne promotionnelle -->
+                <div class="hero-banner__text">
+                    <p class="hero-banner__title hero-banner__title--accent">Categories</p>
+                </div>
+                <h1 class="hero-banner__description">Enhance Your Music Experience</h1>
+                <!-- Compte à rebours de l'offre musicale -->
+                <div class="hero-banner__timer-group" id="musicCountdown" data-duration-days="5" data-duration-hours="23" data-duration-minutes="59" data-duration-seconds="35" aria-live="off">
+                    <div class="hero-banner__timer">
+                        <span class="hero-banner__timer-number" data-unit="hours">23</span>
+                        <span class="hero-banner__timer-text">Hours</span>
+                    </div>
+                    <div class="hero-banner__timer">
+                        <span class="hero-banner__timer-number" data-unit="days">05</span>
+                        <span class="hero-banner__timer-text">Days</span>
+                    </div>
+                    <div class="hero-banner__timer">
+                        <span class="hero-banner__timer-number" data-unit="minutes">59</span>
+                        <span class="hero-banner__timer-text">Minutes</span>
+                    </div>
+                    <div class="hero-banner__timer">
+                        <span class="hero-banner__timer-number" data-unit="seconds">35</span>
+                        <span class="hero-banner__timer-text">Seconds</span>
+                    </div>
+                </div>
+                <!-- Bouton d'achat de l'offre -->
+                <div class="hero-banner__cta">
+                    <a href="#" class="hero-banner__link hero-banner__link--music">Buy Now!</a>
+                </div>
+            </div>
+            <!-- Visuel du produit audio mis en avant -->
+            <img src="image/hero-img-2.png" alt="High-performance wireless speaker" class="hero-banner__image">
+        </section>
+
+        <section class="section-header">
+            <div class="section-header__intro">
+                <div class="section-header__bar"></div>
+                <span class="section-header__label">Our Products</span>
+            </div>
+            <div class="section-header__content">
+                <div class="section-header__group">
+                    <h2 class="section-header__title">Explore Our Products</h2>
+                </div>
+                <div class="flash-sale__navigation">
+                    <button type="button" class="nav-arrow" aria-label="Previous products"><i class="ri-arrow-left-line" aria-hidden="true"></i></button>
+                    <button type="button" class="nav-arrow" aria-label="Next products"><i class="ri-arrow-right-line" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-grid">
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/9.png" alt="Breed Dry Dog Food" class="product-card__image">
+                <span class="product-card__title">Breed Dry Dog Food</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$100</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 35 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(35)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/10.png" alt="CANON EOS DSLR Camera" class="product-card__image">
+                <span class="product-card__title">CANON EOS DSLR Camera</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$360</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 95 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(95)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/11.png" alt="ASUS FHD Gaming Laptop" class="product-card__image">
+                <span class="product-card__title">ASUS FHD Gaming Laptop</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$700</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 325 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(325)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/12.png" alt="Curology Product Set" class="product-card__image">
+                <span class="product-card__title">Curology Product Set</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$500</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 4 out of 5, 145 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-line" aria-hidden="true"></i>
+                    <span>(145)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+
+        <section class="product-grid">
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__new">NEW</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/13.png" alt="Kids Electric Car" class="product-card__image">
+                <span class="product-card__title">Kids Electric Car</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$960</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 65 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(65)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/14.png" alt="Jr. Zoom Soccer Cleats" class="product-card__image">
+                <span class="product-card__title">Jr. Zoom Soccer Cleats</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$1160</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 35 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(35)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__new">NEW</span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/15.png" alt="GP11 Shooter USB Gamepad" class="product-card__image">
+                <span class="product-card__title">GP11 Shooter USB Gamepad</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$660</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 55 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(55)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card__badge">
+                    <span class="product-card__discount"></span>
+                    <div class="product-card__actions">
+                        <button type="button" class="icon-btn" aria-label="Quick view"><i class="ri-eye-line" aria-hidden="true"></i></button>
+                        <button type="button" class="icon-btn wishlist-toggle" aria-label="Add to wishlist" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <img src="image/16.png" alt="Quilted Satin Jacket" class="product-card__image">
+                <span class="product-card__title">Quilted Satin Jacket</span>
+                <div class="product-card__prices">
+                    <span class="product-card__price--current">$660</span>
+                </div>
+                <div class="product-card__rating" aria-label="Rated 5 out of 5, 55 reviews">
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <i class="ri-star-fill" aria-hidden="true"></i>
+                    <span>(55)</span>
+                </div>
+                <button type="button" class="product-card__add-btn add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+
+        <section class="catalogue-link">
+            <a href="#" class="catalogue-link__content">
+                <span class="catalogue-link__title">View All Products</span>
+            </a>
+        </section>
+
+        <section class="section-header">
+            <div class="section-header__intro">
+                <div class="section-header__bar"></div>
+                <span class="section-header__label">Featured</span>
+            </div>
+            <div class="section-header__content">
+                <div class="section-header__group">
+                    <h2 class="section-header__title">New Arrival</h2>
+                </div>
+                <div class="flash-sale__navigation">
+                    <button type="button" class="nav-arrow" aria-label="Previous"><i class="ri-arrow-left-line" aria-hidden="true"></i></button>
+                    <button type="button" class="nav-arrow" aria-label="Next"><i class="ri-arrow-right-line" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="new_arrival_container">
+            <div class="new_arrival_article article_ps5">
+                <img src="image/17.png" alt="PlayStation 5" class="new_arrival_picture">
+                <div class="new_arrival_content">
+                    <span class="new_arrival_title">PlayStation 5</span>
+                    <p class="new_arrival_text">Black and White version of the PS5 coming out on sale.</p>
+                    <a class="new_arrival_link" href="#">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="new_arrival_article article_WC">
+                <img src="image/18.png" alt="Women's Collections" class="new_arrival_picture">
+                <div class="new_arrival_content">
+                    <span class="new_arrival_title">Women's Collections</span>
+                    <p class="new_arrival_text">Featured woman collections that give you another vibe.</p>
+                    <a class="new_arrival_link" href="#">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="new_arrival_container_2">
+                <div class="new_arrival_article_2 article_Speakers">
+                    <img src="image/19.png" alt="Speakers" class="new_arrival_picture">
+                    <div class="new_arrival_content">
+                        <span class="new_arrival_title">Speakers</span>
+                        <p class="new_arrival_text">Amazon wireless speakers</p>
+                        <a class="new_arrival_link" href="#">Shop Now</a>
+                    </div>
+                </div>
+
+                <div class="new_arrival_article_2 article_Perfume">
+                    <img src="image/20.png" alt="Perfume" class="new_arrival_picture">
+                    <div class="new_arrival_content">
+                        <span class="new_arrival_title">Perfume</span>
+                        <p class="new_arrival_text">GUCCI INTENSE OUD EDP</p>
+                        <a class="new_arrival_link" href="#">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section_icon">
+            <div class="section_icon_content">
+                <div class="section_icon_image_content">
+                    <div class="section_icon_image_content_2">
+                        <img src="icons/icon-delivery.svg" alt="" class="section_icon_image">
+                    </div>
+                </div>
+                <span class="section_icon_title">FREE AND FAST DELIVERY</span>
+                <p class="section_icon_text">Free delivery for all orders over $140</p>
+            </div>
+
+            <div class="section_icon_content">
+                <div class="section_icon_image_content">
+                    <div class="section_icon_image_content_2">
+                        <img src="icons/Icon-Customer_service.svg" alt="" class="section_icon_image">
+                    </div>
+                </div>
+                <span class="section_icon_title">24/7 CUSTOMER SERVICE</span>
+                <p class="section_icon_text">Friendly 24/7 customer support</p>
+            </div>
+
+            <div class="section_icon_content">
+                <div class="section_icon_image_content">
+                    <div class="section_icon_image_content_2">
+                        <img src="icons/Icon-secure.svg" alt="" class="section_icon_image">
+                    </div>
+                </div>
+                <span class="section_icon_title">MONEY BACK GUARANTEE</span>
+                <p class="section_icon_text">We return money within 30 days</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer_container">
+            <div class="footer_section">
+                <span class="footer_title">Exclusive</span>
+                <span class="footer_subtitle">Subscribe</span>
+                <span class="footer_text">Get 10% off your first order</span>
+                <form class="footer_newsletter" id="newsletterForm" novalidate>
+                    <label for="newsletterEmail" class="visually-hidden">Email address</label>
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" class="footer_input" required>
+                    <button type="submit" class="footer_button" aria-label="Subscribe">
+                        <i class="ri-send-plane-fill" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <p class="footer_newsletter-message" id="newsletterMessage" role="status" aria-live="polite"></p>
+            </div>
+
+            <div class="footer_section">
+                <span class="footer_title">Support</span>
+                <span class="footer_subtitle">111 Bijoy sarani, Dhaka,  DH 1515, Bangladesh.</span>
+                <a href="mailto:exclusive@gmail.com" class="footer_subtitle">exclusive@gmail.com</a>
+                <a href="tel:+880123456789" class="footer_subtitle">+880 123 456789</a>
+            </div>
+
+            <div class="footer_link">
+                <span class="footer_title">Account</span>
+                <ul class="footer_link_list">
+                    <li><a href="#" class="footer_link_item">My Account</a></li>
+                    <li><a href="#" class="footer_link_item">Login / Register</a></li>
+                    <li><a href="#" class="footer_link_item">Cart</a></li>
+                    <li><a href="#" class="footer_link_item">Wishlist</a></li>
+                    <li><a href="#" class="footer_link_item">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_link">
+                <span class="footer_title">Quick Link</span>
+                <ul class="footer_link_list">
+                    <li><a href="#" class="footer_link_item">Privacy Policy</a></li>
+                    <li><a href="#" class="footer_link_item">Terms Of Use</a></li>
+                    <li><a href="#" class="footer_link_item">FAQ</a></li>
+                    <li><a href="#" class="footer_link_item">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_section">
+                <span class="footer_title">Download App</span>
+                <span class="footer_subtitle">Save $3 with App New User Only</span>
+                <div class="footer_app_images">
+                    <img src="image/Qrcode1.png" alt="QR code to download the Exclusive app" class="footer_qrcode">
+                    <div class="footer_app_badges">
+                        <a href="#"><img src="image/googleplay.png" alt="Get it on Google Play"></a>
+                        <a href="#"><img src="image/AppStore.png" alt="Download on the App Store"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_social_icons">
+            <a href="#" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Twitter"><i class="ri-twitter-fill" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill" aria-hidden="true"></i></a>
+        </div>
+
+        <p class="footer_copyright">&copy; <span id="currentYear">2026</span> Exclusive. All rights reserved.</p>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
+        <i class="ri-arrow-up-line" aria-hidden="true"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
